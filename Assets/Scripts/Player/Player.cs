@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbod;
     [SerializeField] private float movementSpeed;
@@ -25,4 +25,9 @@ public class PlayerMovement : MonoBehaviour
     {
         movementInput = inputValue.Get<Vector2>();
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("Ouch!");
+    }
+    
 }
