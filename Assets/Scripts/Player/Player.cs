@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 smoothVelocity;
+    public float idleSpeed;
 
     private void FixedUpdate() 
     {
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
             ref smoothVelocity,
             0.1f);
         rigidbod.velocity = movementInput * movementSpeed;
+        transform.position += Vector3.left * idleSpeed * Time.deltaTime;
     }
 
     private void OnMove(InputValue inputValue) 

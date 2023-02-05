@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class HouseSpawner : MonoBehaviour
 {
     public GameObject prefab;
 
     public float spawnRate;
-    public float minHeight;
-    public float maxHeight;
+    public float height;
 
     private void OnEnable()
     {
@@ -22,6 +21,6 @@ public class Spawner : MonoBehaviour
     private void Spawn()
     {
         GameObject obstacle = Instantiate(prefab, transform.position, Quaternion.identity);
-        obstacle.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
+        obstacle.transform.position += Vector3.up * height;
     }
 }

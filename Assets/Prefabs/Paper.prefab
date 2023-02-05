@@ -137,4 +137,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  idleSpeed: 1.5
   rigidbod: {fileID: 8562171468696015658}
