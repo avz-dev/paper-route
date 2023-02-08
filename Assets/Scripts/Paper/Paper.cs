@@ -18,10 +18,15 @@ public class Paper : MonoBehaviour
     private void FixedUpdate() 
     {
         transform.position += Vector3.left * idleSpeed * Time.deltaTime;
+        
         if (rigidbod.velocity != Vector2.zero) 
         {
+            transform.Rotate (Vector3.forward * -5);
             rigidbod.velocity = rigidbod.velocity / 1.05f; 
-            Debug.Log(rigidbod.velocity);
+            if (rigidbod.velocity.y < 0.5f) {
+                rigidbod.velocity = Vector2.zero;
+            }
+            Debug.Log(rigidbod.velocity.y);
         }
 
         if (transform.position.x < leftEdge) {

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private Vector2 smoothVelocity;
     public float idleSpeed;
 
-    private void FixedUpdate() 
+    private void Update() 
     {
         smoothedMovementInput = Vector2.SmoothDamp(
             smoothedMovementInput,
