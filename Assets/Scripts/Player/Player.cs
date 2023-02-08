@@ -21,6 +21,16 @@ public class Player : MonoBehaviour
             0.1f);
         rigidbod.velocity = movementInput * movementSpeed;
         transform.position += Vector3.left * idleSpeed * Time.deltaTime;
+        
+        // Damage and healing debugging
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            CharacterTakeDmg(20);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            CharacterHeal(10);
+        }
     }
 
     private void OnMove(InputValue inputValue) 
@@ -28,8 +38,21 @@ public class Player : MonoBehaviour
         movementInput = inputValue.Get<Vector2>();
     }
 
+    private void CharacterTakeDmg(int dmg)
+    {
+        GameManager.gameManager._characterHealth.DmgCharacter(dmg);
+        Debug.Log(GameManager.gameManager._characterHealth.Health);
+    }
+
+    private void CharacterHeal(int healing)
+    {
+        GameManager.gameManager._characterHealth.HealCharacter(healing);
+        Debug.Log(GameManager.gameManager._characterHealth.Health);
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("Ouch!");
+        CharacterTakeDmg(20);
     }
     
 }
