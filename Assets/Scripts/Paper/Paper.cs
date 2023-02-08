@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Paper : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed;
     public float idleSpeed;
     private float leftEdge;
     public Rigidbody2D rigidbod;
@@ -26,7 +26,7 @@ public class Paper : MonoBehaviour
             if (rigidbod.velocity.y < 0.5f) {
                 rigidbod.velocity = Vector2.zero;
             }
-            Debug.Log(rigidbod.velocity.y);
+
         }
 
         if (transform.position.x < leftEdge) {
