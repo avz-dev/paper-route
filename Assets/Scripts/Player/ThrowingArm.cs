@@ -34,6 +34,6 @@ public class ThrowingArm : MonoBehaviour
 
     private void Shoot() 
     {
-        Instantiate(paperPrefab, new Vector3(throwPoint.transform.position.x, throwPoint.transform.position.y, 1), throwPoint.rotation);
+        Instantiate(paperPrefab, throwPoint.position, throwPoint.rotation);
     }
 }
