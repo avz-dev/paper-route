@@ -13,6 +13,7 @@ public class Paper : MonoBehaviour
     {
         leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 1f;
         rigidbod.velocity = transform.up * speed;   
+
     }
 
     private void FixedUpdate() 
