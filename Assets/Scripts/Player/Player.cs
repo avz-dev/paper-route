@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbod;
     [SerializeField] private float movementSpeed;
+    public SpriteRenderer sprite;
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 smoothVelocity;
@@ -14,13 +15,14 @@ public class Player : MonoBehaviour
 
     private void Update() 
     {
+        // movement
         smoothedMovementInput = Vector2.SmoothDamp(
             smoothedMovementInput,
             movementInput,
             ref smoothVelocity,
             0.1f);
         rigidbod.velocity = movementInput * movementSpeed;
-        transform.position += Vector3.left * idleSpeed * Time.deltaTime;
+        //transform.position += Vector3.left * idleSpeed * Time.deltaTime;
         
         // Damage and healing debugging
         if (Input.GetKeyDown(KeyCode.RightShift))
@@ -50,9 +52,20 @@ public class Player : MonoBehaviour
         Debug.Log(GameManager.gameManager._characterHealth.Health);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
         Debug.Log("Ouch!");
         CharacterTakeDmg(20);
+        if (other.gameObject.tag == "Obstacle") 
+        {
+            StartCoroutine(VisualizeDamage());
+        }
     }
     
+    private IEnumerator VisualizeDamage()
+    {
+        sprite.color = Color.white;
+        yield return new WaitForSeconds(0.2f);
+        sprite.color = Color.black;
+    }
 }

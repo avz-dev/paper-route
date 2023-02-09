@@ -6,13 +6,23 @@ public class ThrowingArm : MonoBehaviour
 {
     public Transform throwPoint;
     public GameObject paperPrefab;
+    public GameObject powerBarVisual;
     public PowerBar powerBar;
-    public float strengthLevel = 3f;
-    public float strengthIncrement = 0.1f;
+    public float startingStength = 2f;
+    public float startingIncrement = .25f;
+    private float strengthLevel;
+    private float strengthIncrement;
+
+    void Start()
+    {
+        powerBarVisual.SetActive(false);
+        strengthLevel = startingStength;
+        strengthIncrement = startingIncrement;
+    }
     
     void Update()
     {
-        if (strengthLevel > 10f || strengthLevel < 3f) {
+        if (strengthLevel > 12f || strengthLevel < 2f) {
             strengthIncrement *= -1;
         }
 
@@ -20,14 +30,16 @@ public class ThrowingArm : MonoBehaviour
         {
             strengthLevel += strengthIncrement;
             powerBar.SetPower((int) strengthLevel);
+            powerBarVisual.SetActive(true);
         }
 
         if (Input.GetButtonUp("Fire1"))
             {
                 paperPrefab.GetComponent<Paper>().speed = strengthLevel;
                 Shoot();
-                strengthLevel = 3f;
-                strengthIncrement = 0.1f;
+                strengthLevel = startingStength;
+                strengthIncrement = startingIncrement;
+                powerBarVisual.SetActive(false);
             }
 
     }

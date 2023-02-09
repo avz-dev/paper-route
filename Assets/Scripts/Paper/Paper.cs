@@ -23,10 +23,11 @@ public class Paper : MonoBehaviour
         {
             transform.Rotate (Vector3.forward * -5);
             rigidbod.velocity = rigidbod.velocity / 1.05f; 
-            if (rigidbod.velocity.y < 0.5f) {
+            if (rigidbod.velocity.y < 0.5f && rigidbod.velocity.y > -0.5f) 
+            {
                 rigidbod.velocity = Vector2.zero;
             }
-
+            Debug.Log(rigidbod.velocity.y);
         }
 
         if (transform.position.x < leftEdge) {
