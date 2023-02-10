@@ -274,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86699689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.44, y: 0.16, z: -1}
+  m_LocalPosition: {x: -5.28, y: -2.11, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d050066ca85d4b7f9c2e834de12e6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 68115060814515611, guid: 032c95009bbd74b1d8b5d86da1050c7a, type: 3}
+  prefab: {fileID: 68115060814515611, guid: 14b21ec827083490888fc8a5fd28ff52, type: 3}
   spawnRate: 3.4
   minHeight: 0.05
   maxHeight: 0.2
@@ -1416,7 +1416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &991743690
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d050066ca85d4b7f9c2e834de12e6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 68115060814515611, guid: 032c95009bbd74b1d8b5d86da1050c7a, type: 3}
+  prefab: {fileID: 5405437403619328002, guid: 10f129b5f74c04706b8b148150cb55c7, type: 3}
   spawnRate: 6
   minHeight: -4.5
   maxHeight: -0.5
