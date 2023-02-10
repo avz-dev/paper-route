@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem
 {
@@ -46,7 +47,13 @@ public class HealthSystem
         if (_currentHealth > 0)
         {
             _currentHealth -= dmgAmount;
+            if (_currentHealth <= 0)
+            {
+                // Load Gane Over Level Scene
+                SceneManager.LoadScene(2); // MainMenu = 0, DeliveryGame = 1, GaneOverScreen = 2, LevelCompleteScreen = 3
+            }
         }
+
     }
 
     public void HealCharacter(int healAmount)

@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     // Construct new health system for player character, set current and max health
     public HealthSystem _characterHealth = new HealthSystem(100, 100);
 
+    // Construct new wallet for player character, set current and starting money
+    //public Wallet _characterMoney = new Wallet(20, 20);
+
     void Awake()
     {
         if (gameManager != null && gameManager != this)
