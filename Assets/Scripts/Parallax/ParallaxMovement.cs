@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HouseMovement : MonoBehaviour
+public class ParallaxMovement : MonoBehaviour
 {
     public float speed;
     private float leftEdge;
+    public float offset;
 
     private void Start() {
-        leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 2f;
+        leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - offset;
     }
 
     private void Update() {

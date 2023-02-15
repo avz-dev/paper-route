@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291526203}
+  - component: {fileID: 1550191165}
   m_Layer: 9
   m_Name: RateDetector
   m_TagString: Untagged
@@ -31,6 +32,22 @@ Transform:
   m_Father: {fileID: 5684252910879714771}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1550191165
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291526202}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.01819167, y: 0.031409852}
+  serializedVersion: 2
+  m_Radius: 0.010833718
 --- !u!1 &8861844118073216332
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfc3940d2a1b48b6874c4eda679b96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 5.75
   idleSpeed: 1.5
   rigidbod: {fileID: 8562171468696015658}

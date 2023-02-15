@@ -57,11 +57,12 @@ public class Player : MonoBehaviour
     // character take damage when colliding with Obstacle
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        Debug.Log("Ouch!");
-        CharacterTakeDmg(20);
+        
         if (other.gameObject.tag == "Obstacle") 
         {
             StartCoroutine(VisualizeDamage());
+            CharacterTakeDmg(20);
+            movementSpeed -= .3f;
         }
     }
     
