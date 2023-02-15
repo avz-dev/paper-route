@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0016131401, y: -1.1550307}
+  m_Offset: {x: -0.0016131401, y: -1.150084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1400495, y: 0.66091704}
+  m_Size: {x: 1.1400495, y: 0.65102375}
   m_EdgeRadius: 0
 --- !u!114 &4293840545172899440
 MonoBehaviour:
@@ -272,7 +272,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1172802, y: -1.7183003}
+  m_Offset: {x: 1.1321201, y: -1.7183003}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -283,7 +283,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0705992, y: 1.2953148}
+  m_Size: {x: 1.0409193, y: 1.2953148}
   m_EdgeRadius: 0
 --- !u!61 &3876733792242498930
 BoxCollider2D:
@@ -298,7 +298,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.0991155, y: -1.7190804}
+  m_Offset: {x: -1.1139554, y: -1.7190804}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -309,7 +309,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.062321, y: 1.3134308}
+  m_Size: {x: 1.0326412, y: 1.3134308}
   m_EdgeRadius: 0
 --- !u!114 &301325986
 MonoBehaviour:
@@ -374,7 +374,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009024143, y: -1.9236852}
+  m_Offset: {x: -0.0008690357, y: -1.942033}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -385,7 +385,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1392426, y: 0.8844445}
+  m_Size: {x: 1.1194563, y: 0.84774876}
   m_EdgeRadius: 0
 --- !u!114 &972256236
 MonoBehaviour:
