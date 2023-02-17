@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThrowingArm : MonoBehaviour
 {
     public Transform throwPoint;
     public GameObject paperPrefab;
     public GameObject powerBarVisual;
+    public Image fill;
     public PowerBar powerBar;
     public Player player;
+    public Color[] powerBarColors;
     public float startingStength = 2f;
     public float startingIncrement = .25f;
     private float strengthLevel;
@@ -34,6 +37,14 @@ public class ThrowingArm : MonoBehaviour
             strengthLevel += strengthIncrement;
             powerBar.SetPower((int) strengthLevel);
             powerBarVisual.SetActive(true);
+
+            if (strengthLevel > 9) {
+                fill.GetComponent<Image>().color = powerBarColors[0];
+            } else if (strengthLevel > 6) {
+                fill.GetComponent<Image>().color = powerBarColors[1];
+            } else {
+                fill.GetComponent<Image>().color = powerBarColors[2];
+            }
         }
         // instantiate paper with velocity base on power meter, reset power meter
         if (Input.GetButtonUp("Fire1"))

@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 smoothVelocity;
+    public Color healingColor;
+    public Color damageColor;
     public float idleSpeed;
 
     private void Update() 
@@ -60,17 +62,25 @@ public class Player : MonoBehaviour
         
         if (other.gameObject.tag == "Obstacle") 
         {
-            StartCoroutine(VisualizeDamage());
+            StartCoroutine(VisualizeCollision(damageColor));
             CharacterTakeDmg(20);
             movementSpeed -= .3f;
+
+        } else if (other.gameObject.tag == "Health"){
+            StartCoroutine(VisualizeCollision(healingColor));
+            CharacterHeal(20);
+            movementSpeed += .3f;
+            Destroy(other.gameObject);
         }
     }
     
-    // visualize damage when character takes damage
-    private IEnumerator VisualizeDamage()
+    // visualize damage/healing when character collides with item
+    private IEnumerator VisualizeCollision(Color effectColor)
     {
-        sprite.color = Color.white;
+        sprite.color = effectColor;
         yield return new WaitForSeconds(0.2f);
-        sprite.color = Color.black;
+        sprite.color = Color.white;
     }
+
+   
 }

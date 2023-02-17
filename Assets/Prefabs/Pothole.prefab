@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1370422256693296238}
   - component: {fileID: 2033769927}
   m_Layer: 8
-  m_Name: Obstacle
+  m_Name: Pothole
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9056604, g: 0.59524935, b: 0.32894266, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 696d579cf713f4136864c11c8d54a30a, type: 3}
+  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &-1370422256693296238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +112,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.013875266, y: -0.39774}
-  m_Size: {x: 0.46351582, y: 0.14902307}
+  m_Offset: {x: 0.005849214, y: -0.49314332}
+  m_Size: {x: 0.77378684, y: 0.47114033}
   m_Direction: 1
