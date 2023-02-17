@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0016131401, y: -1.150084}
+  m_Offset: {x: -0.0230155, y: -0.8165401}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1400495, y: 0.65102375}
+  m_Size: {x: 0.9927645, y: 0.5440123}
   m_EdgeRadius: 0
 --- !u!114 &4293840545172899440
 MonoBehaviour:
@@ -75,6 +75,7 @@ MonoBehaviour:
   piggyBank: {fileID: 0}
   houseZone: {fileID: 8465487905138636317}
   floatingTextprefab: {fileID: 7951897645937574071, guid: e775f11fe4e5742f6a631df08e651c5a, type: 3}
+  rateColor: {r: 0.60463935, g: 0.9622642, b: 0.4765931, a: 1}
   rate: 0.25
 --- !u!1 &3876733792105247320
 GameObject:
@@ -87,8 +88,8 @@ GameObject:
   - component: {fileID: 3876733792105247302}
   - component: {fileID: 3876733792105247303}
   - component: {fileID: 83719446}
-  - component: {fileID: 83719450}
   - component: {fileID: 4924356849546374519}
+  - component: {fileID: 5973137713900597471}
   m_Layer: 7
   m_Name: House
   m_TagString: Untagged
@@ -153,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 315d71d353d144cfd9fd3b9cd23f633e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c27776ad478394d37a80f6373ea65656, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,32 +186,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!61 &83719450
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876733792105247320}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.008054972, y: -0.33256388}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.8, y: 4.73}
-    newSize: {x: 3.57, y: 3.85}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.2338462, y: 0.9647856}
-  m_EdgeRadius: 0
 --- !u!114 &4924356849546374519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +200,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   offset: 2
+--- !u!61 &5973137713900597471
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876733792105247320}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.09881663}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.78125, y: 3.71875}
+    newSize: {x: 3.57, y: 3.85}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.78125, y: 1.2285647}
+  m_EdgeRadius: 0
 --- !u!1 &3876733792242498932
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +273,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1321201, y: -1.7183003}
+  m_Offset: {x: 0.9516366, y: -1.3062156}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -283,7 +284,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0409193, y: 1.2953148}
+  m_Size: {x: 0.87153065, y: 1.0725801}
   m_EdgeRadius: 0
 --- !u!61 &3876733792242498930
 BoxCollider2D:
@@ -298,7 +299,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.1139554, y: -1.7190804}
+  m_Offset: {x: -0.9715587, y: -1.3225955}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -309,7 +310,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0326412, y: 1.3134308}
+  m_Size: {x: 0.8306067, y: 1.1001315}
   m_EdgeRadius: 0
 --- !u!114 &301325986
 MonoBehaviour:
@@ -327,6 +328,7 @@ MonoBehaviour:
   piggyBank: {fileID: 0}
   houseZone: {fileID: 8465487905138636317}
   floatingTextprefab: {fileID: 7951897645937574071, guid: e775f11fe4e5742f6a631df08e651c5a, type: 3}
+  rateColor: {r: 0.8490566, g: 0.4661705, b: 0.38848346, a: 1}
   rate: 0.05
 --- !u!1 &3876733793788218145
 GameObject:
@@ -374,7 +376,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008690357, y: -1.942033}
+  m_Offset: {x: -0.012304068, y: -1.4980259}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -385,7 +387,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1194563, y: 0.84774876}
+  m_Size: {x: 0.98490477, y: 0.73094034}
   m_EdgeRadius: 0
 --- !u!114 &972256236
 MonoBehaviour:
@@ -403,6 +405,7 @@ MonoBehaviour:
   piggyBank: {fileID: 0}
   houseZone: {fileID: 8465487905138636317}
   floatingTextprefab: {fileID: 7951897645937574071, guid: e775f11fe4e5742f6a631df08e651c5a, type: 3}
+  rateColor: {r: 1, g: 0.93379444, b: 0.4764151, a: 1}
   rate: 0.1
 --- !u!1 &8465487905138636317
 GameObject:

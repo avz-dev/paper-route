@@ -144,7 +144,7 @@ TextMesh:
   m_Font: {fileID: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4283283261
+    rgba: 4289718730
 --- !u!95 &9150135819978316700
 Animator:
   serializedVersion: 5

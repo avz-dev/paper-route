@@ -6,6 +6,7 @@ public class HouseSpawner : MonoBehaviour
 {
     public GameObject prefab;
     public Player playerReference;
+    public Sprite[] houseSprites;
     public float spawnRate;
     public float height;
     public int housesPassed = 0;
@@ -27,8 +28,9 @@ public class HouseSpawner : MonoBehaviour
     // spawn houses
     private void Spawn()
     {
-        GameObject obstacle = Instantiate(prefab, transform.position, Quaternion.identity);
-        obstacle.transform.position += Vector3.up * height;
+        GameObject house = Instantiate(prefab, transform.position, Quaternion.identity);
+        house.GetComponent<SpriteRenderer>().sprite = houseSprites[Random.Range(0, 6)];
+        house.transform.position += Vector3.up * height;
         housesPassed++;
     }
 }

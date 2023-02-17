@@ -9,6 +9,7 @@ public class Scoring : MonoBehaviour
     public PiggyBank piggyBank;
     public GameObject houseZone;
     public GameObject floatingTextprefab;
+    public Color rateColor;
     public float rate;
     private bool payed = false;
     
@@ -35,6 +36,7 @@ public class Scoring : MonoBehaviour
             string rateAsString = "+" + rateAsInt.ToString() + "¢";
             GameObject prefab = Instantiate(floatingTextprefab, other.transform.position, Quaternion.identity);
             prefab.GetComponentInChildren<TextMesh>().text = rateAsString;
+            prefab.GetComponentInChildren<TextMesh>().color = rateColor;
         }
     }
 }
