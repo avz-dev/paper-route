@@ -38,4 +38,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentLevel);
         currentLevel++;
     }
+
+    public void QuitGame() {
+        Application.Quit();
+    }
 }
