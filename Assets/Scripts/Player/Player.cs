@@ -71,13 +71,14 @@ public class Player : MonoBehaviour
             StartCoroutine(VisualizeCollision(damageColor));
             CharacterTakeDmg(20);
             movementSpeed -= .4f;
+            Destroy(other.gameObject);
         } else if (other.gameObject.tag == "Health"){
             StartCoroutine(VisualizeCollision(healingColor));
             CharacterHeal(20);
             movementSpeed += .4f;
             Destroy(other.gameObject);
         }
-        Destroy(other.gameObject);
+        
     }
     
     // visualize damage/healing when character collides with item

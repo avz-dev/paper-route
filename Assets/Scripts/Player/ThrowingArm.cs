@@ -46,6 +46,9 @@ public class ThrowingArm : MonoBehaviour
                 fill.GetComponent<Image>().color = powerBarColors[2];
             }
         }
+    }
+
+    void Update() {
         // instantiate paper with velocity base on power meter, reset power meter
         if (Input.GetButtonUp("Fire1"))
             {
