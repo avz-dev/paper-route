@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbod;
     [SerializeField] private float movementSpeed;
+    [SerializeField] private GameOverManager gameOverManager;
+    public TextMeshProUGUI healthText;
     public SpriteRenderer sprite;
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
@@ -46,14 +49,17 @@ public class Player : MonoBehaviour
     private void CharacterTakeDmg(int dmg)
     {
         GameManager.gameManager._characterHealth.DmgCharacter(dmg);
-        Debug.Log(GameManager.gameManager._characterHealth.Health);
+        GameManager.gameManager._characterHealth.updateHealthText(healthText);
+        if (GameManager.gameManager._characterHealth.IsDead()) {
+            gameOverManager.EndGame();
+        }
     }
 
     // heal character
     private void CharacterHeal(int healing)
     {
         GameManager.gameManager._characterHealth.HealCharacter(healing);
-        Debug.Log(GameManager.gameManager._characterHealth.Health);
+        GameManager.gameManager._characterHealth.updateHealthText(healthText);
     }
 
     // character take damage when colliding with Obstacle
