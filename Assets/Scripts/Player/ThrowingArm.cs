@@ -25,7 +25,7 @@ public class ThrowingArm : MonoBehaviour
         player = GetComponent<Player>(); 
     }
     
-    void Update()
+    void FixedUpdate()
     {
         // alternates direction of power meter growth
         if (strengthLevel > 12f || strengthLevel < 2f) {
