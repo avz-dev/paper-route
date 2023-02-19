@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     // Construct new wallet for player character, set current and starting money
     //public Wallet _characterMoney = new Wallet(20, 20);
 
+    public static int firstLevel = 1;
+    public static int lastLevel = 4;
+    public static int currentLevel = firstLevel;
+
     void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -27,6 +31,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame() {
-        SceneManager.LoadScene(1);
+        if (currentLevel > lastLevel) {
+            currentLevel = firstLevel;
+        }
+        
+        SceneManager.LoadScene(currentLevel);
+        currentLevel++;
     }
 }
