@@ -311,7 +311,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbod: {fileID: 8096031704573340236}
   movementSpeed: 3
+  gameOverManager: {fileID: 0}
+  healthText: {fileID: 0}
   sprite: {fileID: 8096031704573340237}
+  healingColor: {r: 0, g: 0, b: 0, a: 0}
+  damageColor: {r: 0, g: 0, b: 0, a: 0}
   idleSpeed: 1.5
 --- !u!114 &8096031704573340232
 MonoBehaviour:
@@ -384,7 +388,10 @@ MonoBehaviour:
   throwPoint: {fileID: 8096031704309357288}
   paperPrefab: {fileID: 8861844118073216332, guid: ec47bf38a7ac64dabb4e15670359cf41, type: 3}
   powerBarVisual: {fileID: 8096031704937913143}
+  fill: {fileID: 0}
   powerBar: {fileID: 8096031704755862806}
+  player: {fileID: 0}
+  powerBarColors: []
   startingStength: 2
   startingIncrement: 0.25
 --- !u!114 &8096031704573340247
@@ -576,7 +583,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &8096031704937913141
 MonoBehaviour:
