@@ -16,13 +16,17 @@ public class ThrowingArm : MonoBehaviour
     public float startingIncrement = .25f;
     private float strengthLevel;
     private float strengthIncrement;
-
+    public bool isStunned = false;
+    public int paperCount;
+    
     void Start()
     {
         powerBarVisual.SetActive(false);
         strengthLevel = startingStength;
         strengthIncrement = startingIncrement;
         player = GetComponent<Player>(); 
+        paperCount = player.paperCount;
+        Debug.Log(paperCount);
     }
     
     void FixedUpdate()
@@ -32,7 +36,7 @@ public class ThrowingArm : MonoBehaviour
             strengthIncrement *= -1;
         }
         // updates power meter while button is pressed
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && !isStunned && paperCount > 0)
         {
             strengthLevel += strengthIncrement;
             powerBar.SetPower((int) strengthLevel);
@@ -45,23 +49,29 @@ public class ThrowingArm : MonoBehaviour
             } else {
                 fill.GetComponent<Image>().color = powerBarColors[2];
             }
-        }
+        } 
     }
 
     void Update() {
         // instantiate paper with velocity base on power meter, reset power meter
-        if (Input.GetButtonUp("Fire1"))
-            {
-                paperPrefab.GetComponent<Paper>().speed = strengthLevel;
-                Shoot();
-                strengthLevel = startingStength;
-                strengthIncrement = startingIncrement;
-                powerBarVisual.SetActive(false);
-            }
+        if (Input.GetButtonUp("Fire1") && !isStunned && paperCount > 0)
+        {
+            paperPrefab.GetComponent<Paper>().speed = strengthLevel;
+            Shoot();
+            ResetShot();
+        } 
     }
 
     private void Shoot() 
     {
+        paperCount--;
         Instantiate(paperPrefab, throwPoint.position, throwPoint.rotation);
+    }
+
+    public void ResetShot() 
+    {
+        strengthLevel = startingStength;
+        strengthIncrement = startingIncrement;
+        powerBarVisual.SetActive(false);
     }
 }

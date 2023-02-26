@@ -21,6 +21,14 @@ public class Paper : MonoBehaviour
     {
         transform.position += Vector3.left * idleSpeed * Time.deltaTime;
         
+        // destroy object once it runs off screen
+        if (transform.position.x < leftEdge) {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Update() 
+    {
         // slow down velocity
         if (rigidbod.velocity != Vector2.zero) 
         {
@@ -31,10 +39,6 @@ public class Paper : MonoBehaviour
             {
                 rigidbod.velocity = Vector2.zero;
             }
-        }
-        // destroy object once it runs off screen
-        if (transform.position.x < leftEdge) {
-            Destroy(gameObject);
         }
     }
 

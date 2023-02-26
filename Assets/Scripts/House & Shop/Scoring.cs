@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Scoring : MonoBehaviour
 {
-    public Player playerReference;
+    public GameManager gm;
     public PiggyBank piggyBank;
     public GameObject houseZone;
     public GameObject floatingTextprefab;
@@ -14,8 +14,8 @@ public class Scoring : MonoBehaviour
     private bool payed = false;
     
     private void Start() {
-        playerReference = FindObjectOfType<Player>();
-        piggyBank = playerReference.GetComponent<PiggyBank>();
+        gm = FindObjectOfType<GameManager>();
+        piggyBank = gm.GetComponent<PiggyBank>();
     }
 
     private void OnTriggerStay2D(Collider2D other) {

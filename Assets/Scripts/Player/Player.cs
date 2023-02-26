@@ -8,86 +8,122 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbod;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private GameOverManager gameOverManager;
+    [SerializeField] private HomeBaseManager homeBaseManager;
+    public Bike bike;
+    public ThrowingArm throwingArm;
     public TextMeshProUGUI healthText;
     public SpriteRenderer sprite;
+    public Sprite[] bikeSprites;
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 smoothVelocity;
     public Color healingColor;
     public Color damageColor;
     public float idleSpeed;
+    public float slideDuration;
+    public float stunDuration;
+    public int paperCount;
+    public DataSO playerData;
+    private bool isStunned = false;
+    private bool isSliding = false; 
+
+
+    private void Awake() {
+        if (playerData.Initialized) {
+            SetBike(playerData.Bicycle);
+        } else {
+            SetBike(gameObject.AddComponent<Bike>());
+            playerData.Initialized = true;
+        }
+    }
 
     private void Update() 
     {
-        // movement
-        smoothedMovementInput = Vector2.SmoothDamp(
-            smoothedMovementInput,
-            movementInput,
-            ref smoothVelocity,
-            0.1f);
-        rigidbod.velocity = movementInput * movementSpeed;
-        //transform.position += Vector3.left * idleSpeed * Time.deltaTime;
-        
-        // damage and healing debugging
-        if (Input.GetKeyDown(KeyCode.RightShift))
-        {
-            CharacterTakeDmg(20);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            CharacterHeal(10);
+        if (!isStunned) {
+            // movement
+            smoothedMovementInput = Vector2.SmoothDamp(
+                smoothedMovementInput,
+                movementInput,
+                ref smoothVelocity,
+                0.1f);
+            rigidbod.velocity = movementInput * movementSpeed;
+            //transform.position += Vector3.left * idleSpeed * Time.deltaTime;
         }
     }
 
     private void OnMove(InputValue inputValue) 
     {
-        movementInput = inputValue.Get<Vector2>();
-    }
-
-    // damage character
-    private void CharacterTakeDmg(int dmg)
-    {
-        GameManager.gameManager._characterHealth.DmgCharacter(dmg);
-        GameManager.gameManager._characterHealth.updateHealthText(healthText);
-        if (GameManager.gameManager._characterHealth.IsDead()) {
-            gameOverManager.EndGame();
+        if (!isSliding) {
+           movementInput = inputValue.Get<Vector2>(); 
         }
     }
 
-    // heal character
-    private void CharacterHeal(int healing)
-    {
-        GameManager.gameManager._characterHealth.HealCharacter(healing);
-        GameManager.gameManager._characterHealth.updateHealthText(healthText);
-    }
-
-    // character take damage when colliding with Obstacle
+    // character take damage when colliding with obstacles
     private void OnCollisionEnter2D(Collision2D other) 
     {
         
         if (other.gameObject.tag == "Obstacle") 
         {
-            StartCoroutine(VisualizeCollision(damageColor));
-            CharacterTakeDmg(20);
-            movementSpeed -= .4f;
-            Destroy(other.gameObject);
-        } else if (other.gameObject.tag == "Health"){
-            StartCoroutine(VisualizeCollision(healingColor));
-            CharacterHeal(20);
-            movementSpeed += .4f;
-            Destroy(other.gameObject);
+            throwingArm.ResetShot();
+            StartCoroutine(VisualizeDamage());
+            StartCoroutine(Stun());
+            other.gameObject.GetComponent<Collider2D>().enabled = false;
         }
-        
-    }
-    
-    // visualize damage/healing when character collides with item
-    private IEnumerator VisualizeCollision(Color effectColor)
-    {
-        sprite.color = effectColor;
-        yield return new WaitForSeconds(0.2f);
-        sprite.color = Color.white;
     }
 
-   
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Slippery"){
+            throwingArm.ResetShot();
+            StartCoroutine(VisualizeDamage());
+            StartCoroutine(Slide());
+        }
+    }
+    
+    // Stun player for the given stun duration
+    private IEnumerator Stun()
+    {
+        throwingArm.isStunned = true;
+        yield return new WaitForSeconds(0.1f);
+        rigidbod.velocity = Vector2.zero;
+        isStunned = true;
+        yield return new WaitForSeconds(stunDuration);
+        isStunned = false;
+        throwingArm.isStunned = false;
+    }
+
+    // Make player slide for the the current slideDuration
+    private IEnumerator Slide()
+    {
+        throwingArm.isStunned = isSliding = true;
+        yield return new WaitForSeconds(slideDuration);
+        throwingArm.isStunned = isSliding = false;
+    }
+
+    // visualize damage when character collides with item
+    private IEnumerator VisualizeDamage() {
+        int i = 3;
+        while (i > 0) {
+            sprite.color = new Color(1f, 1f, 1f, .6f);
+            yield return new WaitForSeconds(0.2f);
+            sprite.color = new Color(1f, 1f, 1f, 1f);
+            yield return new WaitForSeconds(0.2f);
+            i--;
+        }
+    }
+
+    // Change parameters based on given bike
+    public void SetBike(Bike bike)
+    {
+        this.bike = bike;
+        paperCount = bike.paperCapacity;
+        slideDuration = bike.slideDuration;
+        stunDuration = bike.stunDuration;
+        movementSpeed = bike.bikeSpeed;
+        sprite.sprite = bikeSprites[bike.bikeSpriteIndex];
+    }
+
+    public void RestockPaper()
+    {
+        throwingArm.paperCount = paperCount;
+    }
 }
