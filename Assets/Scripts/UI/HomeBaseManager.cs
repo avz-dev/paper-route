@@ -16,9 +16,14 @@ public class HomeBaseManager : MonoBehaviour
     public TextMeshPro summaryText;
     public GameObject hud;
     public PiggyBank piggyBank;
-    private bool[] bikes = new bool[3];
+    public HouseSpawner houseSpawner;
+    public BillboardSpawner billboardSpawner;
+    private bool[] bikes = new bool[4];
     private Bike currentBike;
+    public float[] bikePrices = {0, 10, 15, 20};
+    public float nextLevelPrice = 15f;
     public DataSO playerData;
+    public GameObject[] shopButtons;
 
     private void Start()
     {
@@ -39,9 +44,11 @@ public class HomeBaseManager : MonoBehaviour
     public void EndGame() 
     {
         WriteSummary();
+        ShowPurchasable();
         gameOverScreen.SetActive(true);
         finalPiggyBankBalance.SetText(currentPiggyBankBalance.text);
         hud.SetActive(false);
+        playerReference.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -54,6 +61,8 @@ public class HomeBaseManager : MonoBehaviour
     public void RestartRoute() 
     {
         gameOverScreen.SetActive(false);
+        playerReference.transform.position = new Vector2(0, -3);
+        playerReference.gameObject.SetActive(true);
         hud.SetActive(true);
         playerReference.RestockPaper();
         StartSpawning();
@@ -72,33 +81,40 @@ public class HomeBaseManager : MonoBehaviour
 
     public void StartSpawning() 
     {
+        houseSpawner.progressBar.SetProgress(0);
         spawners.SetActive(true);
+        billboardSpawner.SpawnBillboard();
     }
 
-    public void SelectBike(int bikeOption, float bikeCost) 
+    public void SelectBike(int bikeOption) 
     {
-        if (bikes[bikeOption] || piggyBank.withdraw(bikeCost)) {
+        if (bikes[bikeOption] || piggyBank.withdraw(bikePrices[bikeOption])) {
             switch (bikeOption)
             {
                 case 1: 
-                    currentBike = gameObject.AddComponent<BasketBike>();
+                    if (!bikes[bikeOption]) shopButtons[1].transform.GetChild(0).gameObject.SetActive(false); 
+                    playerData.Bicycle = gameObject.AddComponent<BasketBike>();
                     break;
                 case 2: 
-                    currentBike = gameObject.AddComponent<RoadBike>();
+                    if (!bikes[bikeOption]) shopButtons[2].transform.GetChild(0).gameObject.SetActive(false); 
+                    playerData.Bicycle = gameObject.AddComponent<RoadBike>();
                     break;
-                case 3: 
-                    currentBike = gameObject.AddComponent<MountainBike>();
+                case 3:
+                    if (!bikes[bikeOption]) shopButtons[3].transform.GetChild(0).gameObject.SetActive(false); 
+                    playerData.Bicycle = gameObject.AddComponent<MountainBike>();
                     break;
                 default: 
-                    currentBike = gameObject.AddComponent<Bike>();
+                    playerData.Bicycle = gameObject.AddComponent<Bike>();
                     break;
             }
-            bikes[bikeOption] = true;
-            GameManager.currentBike = currentBike;
-            playerReference.SetBike(currentBike);
 
+            
+
+            bikes[bikeOption] = true;
             playerData.Bikes = bikes;
-            playerData.Bicycle = currentBike;
+            currentBike = playerData.Bicycle;
+            GameManager.currentBike = currentBike;
+            playerReference.SetBike(currentBike);            
         }
     }
 
@@ -109,5 +125,32 @@ public class HomeBaseManager : MonoBehaviour
                         piggyBank.currentPaycheck, bonus,
                         piggyBank.currentPaycheck + bonus));
         piggyBank.ClearPaycheck();
+    }
+
+    public void PurchaseNextLevel()
+    {
+        if (piggyBank.GetBalance() >= nextLevelPrice)
+        {
+            piggyBank.withdraw(nextLevelPrice);
+            GameManager.gameManager.StartGame();
+        }
+    }
+
+    private void ShowPurchasable()
+    {
+        for (int i = 1; i < 4; i++)
+        {
+            if (!bikes[i] && bikePrices[i] > piggyBank.GetBalance()) {
+                shopButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, .6f);
+            } else {
+                shopButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+            } 
+        }
+
+        if (piggyBank.GetBalance() < nextLevelPrice) {
+            shopButtons[0].GetComponent<Image>().color = new Color(1f, 1f, 1f, .6f);
+        } else {
+            shopButtons[0].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        } 
     }
 }

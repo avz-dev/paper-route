@@ -9,10 +9,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbod;
     [SerializeField] private float movementSpeed;
     [SerializeField] private HomeBaseManager homeBaseManager;
-    public Bike bike;
     public ThrowingArm throwingArm;
     public TextMeshProUGUI healthText;
     public SpriteRenderer sprite;
+    public Animator bikeAnim;
+    public AnimationClip[] bikeAnimations;
     public Sprite[] bikeSprites;
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
@@ -29,12 +30,11 @@ public class Player : MonoBehaviour
 
 
     private void Awake() {
-        if (playerData.Initialized) {
-            SetBike(playerData.Bicycle);
-        } else {
-            SetBike(gameObject.AddComponent<Bike>());
-            playerData.Initialized = true;
+        Bike bike = playerData.Bicycle;
+        if (bike == null) {
+            playerData.Bicycle = bike = gameObject.AddComponent<Bike>();
         }
+        SetBike(bike);
     }
 
     private void Update() 
@@ -113,17 +113,18 @@ public class Player : MonoBehaviour
 
     // Change parameters based on given bike
     public void SetBike(Bike bike)
-    {
-        this.bike = bike;
+    {   
         paperCount = bike.paperCapacity;
         slideDuration = bike.slideDuration;
         stunDuration = bike.stunDuration;
         movementSpeed = bike.bikeSpeed;
         sprite.sprite = bikeSprites[bike.bikeSpriteIndex];
+        bikeAnim.Play(bike.bikeAnimation);
     }
 
     public void RestockPaper()
     {
         throwingArm.paperCount = paperCount;
+        throwingArm.paperText.SetText(string.Format("{0}", paperCount));
     }
 }

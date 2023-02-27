@@ -14,8 +14,13 @@ public class PowerBar : MonoBehaviour
         slider.value = power;
     }
 
-    public void SetPower(int power)
+    public void SetPower(float power)
     {
         slider.value = power;
+    }
+
+    public void SetProgress(int progress)
+    {
+        slider.value = progress;
     }
 }

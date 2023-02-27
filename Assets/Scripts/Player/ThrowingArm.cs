@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ThrowingArm : MonoBehaviour
 {
     public Transform throwPoint;
     public GameObject paperPrefab;
     public GameObject powerBarVisual;
+    public TextMeshProUGUI paperText;
     public Image fill;
     public PowerBar powerBar;
     public Player player;
@@ -26,7 +28,7 @@ public class ThrowingArm : MonoBehaviour
         strengthIncrement = startingIncrement;
         player = GetComponent<Player>(); 
         paperCount = player.paperCount;
-        Debug.Log(paperCount);
+        paperText.SetText(string.Format("{0}", paperCount));
     }
     
     void FixedUpdate()
@@ -39,7 +41,7 @@ public class ThrowingArm : MonoBehaviour
         if (Input.GetButton("Fire1") && !isStunned && paperCount > 0)
         {
             strengthLevel += strengthIncrement;
-            powerBar.SetPower((int) strengthLevel);
+            powerBar.SetPower(strengthLevel);
             powerBarVisual.SetActive(true);
 
             if (strengthLevel > 9) {
@@ -65,7 +67,9 @@ public class ThrowingArm : MonoBehaviour
     private void Shoot() 
     {
         paperCount--;
+        paperText.SetText(string.Format("{0}", paperCount));
         Instantiate(paperPrefab, throwPoint.position, throwPoint.rotation);
+        StartCoroutine(PaperCooldown());
     }
 
     public void ResetShot() 
@@ -73,5 +77,12 @@ public class ThrowingArm : MonoBehaviour
         strengthLevel = startingStength;
         strengthIncrement = startingIncrement;
         powerBarVisual.SetActive(false);
+    }
+
+    private IEnumerator PaperCooldown()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(1f);
+        isStunned = false;
     }
 }

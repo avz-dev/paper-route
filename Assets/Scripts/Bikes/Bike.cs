@@ -9,14 +9,16 @@ public class Bike : MonoBehaviour
     public float slideDuration;
     public float stunDuration;
     public int bikeSpriteIndex;
+    public string bikeAnimation;
 
     public Bike()
     {
-        paperCapacity = 3;
+        paperCapacity = 30;
         bikeSpeed = 3f;
         slideDuration = 1f;
         stunDuration = 1f;
         bikeSpriteIndex = 0;
+        bikeAnimation = "PlayerIdleAnimation";
     }
 }
 
@@ -29,6 +31,7 @@ public class MountainBike : Bike
         stunDuration = 0.8f;
         bikeSpeed = 2f;
         bikeSpriteIndex = 3;
+        bikeAnimation = "MountainBikeAnim";
     }
 }
 
@@ -41,6 +44,7 @@ public class RoadBike : Bike
         stunDuration = 1.4f;
         bikeSpeed = 3.5f;
         bikeSpriteIndex = 2;
+        bikeAnimation = "RoadBikeAnim";
     }
 }
 
@@ -53,5 +57,6 @@ public class BasketBike : Bike
         stunDuration = 1f;
         bikeSpeed = 3f;
         bikeSpriteIndex = 1;
+        bikeAnimation = "BasketBikeAnim";
     }
 }

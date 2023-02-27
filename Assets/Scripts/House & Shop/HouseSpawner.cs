@@ -8,6 +8,7 @@ public class HouseSpawner : MonoBehaviour
     public ShopSpawner shopSpawner;
     public Player playerReference;
     public Sprite[] houseSprites;
+    public PowerBar progressBar;
     public float spawnRate;
     public float height;
     public float bikeShopHeight = 1.85f;
@@ -35,9 +36,12 @@ public class HouseSpawner : MonoBehaviour
         house.GetComponent<SpriteRenderer>().sprite = houseSprites[Random.Range(0, 6)];
         house.transform.position += Vector3.up * height;
         housesPassed++;
+        progressBar.SetProgress(housesPassed);
+
+
         // spawn bike shop & kill spawners when maxHouses is reached 
         if (housesPassed >= maxHouses) {
-            maxHouses = 0;
+            housesPassed = 0;
             shopSpawner.SpawnBikeShop();
         }
     }

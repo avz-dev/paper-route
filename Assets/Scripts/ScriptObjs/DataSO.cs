@@ -5,16 +5,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class DataSO : ScriptableObject
 {
-    public bool initialized;
     public float balance;
     public Bike bicycle;
     public bool[] bikes;
-
-    public bool Initialized
-    {
-        get { return initialized; }
-        set { initialized = value; }
-    }
 
     public float Balance
     {
