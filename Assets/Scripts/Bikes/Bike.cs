@@ -14,9 +14,9 @@ public class Bike : MonoBehaviour
     public Bike()
     {
         paperCapacity = 30;
-        bikeSpeed = 3f;
+        bikeSpeed = 2.5f;
         slideDuration = 1f;
-        stunDuration = 1f;
+        stunDuration = 1.5f;
         bikeSpriteIndex = 0;
         bikeAnimation = "PlayerIdleAnimation";
     }

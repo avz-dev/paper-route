@@ -28,7 +28,7 @@ public class HomeBaseManager : MonoBehaviour
     private void Start()
     {
         currentBike = gameObject.AddComponent<Bike>();
-        bikes[0] = true;
+        bikes = playerData.Bikes;
     }
 
     private void Update() 
@@ -48,7 +48,7 @@ public class HomeBaseManager : MonoBehaviour
         gameOverScreen.SetActive(true);
         finalPiggyBankBalance.SetText(currentPiggyBankBalance.text);
         hud.SetActive(false);
-        playerReference.gameObject.SetActive(false);
+        playerReference.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Time.timeScale = 0;
     }
 
@@ -62,7 +62,7 @@ public class HomeBaseManager : MonoBehaviour
     {
         gameOverScreen.SetActive(false);
         playerReference.transform.position = new Vector2(0, -3);
-        playerReference.gameObject.SetActive(true);
+        playerReference.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         hud.SetActive(true);
         playerReference.RestockPaper();
         StartSpawning();
@@ -112,7 +112,8 @@ public class HomeBaseManager : MonoBehaviour
             playerData.Bikes = bikes;
             currentBike = playerData.Bicycle;
             GameManager.currentBike = currentBike;
-            playerReference.SetBike(currentBike);            
+            playerReference.SetBike(currentBike); 
+            ShowPurchasable();           
         }
     }
 
@@ -126,10 +127,11 @@ public class HomeBaseManager : MonoBehaviour
     }
 
     public void PurchaseNextLevel()
-    {
+    {    
         if (piggyBank.GetBalance() >= nextLevelPrice)
         {
             piggyBank.withdraw(nextLevelPrice);
+            Time.timeScale = 1;
             GameManager.gameManager.StartGame();
         }
     }
