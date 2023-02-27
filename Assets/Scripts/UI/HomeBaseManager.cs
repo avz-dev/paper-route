@@ -108,8 +108,6 @@ public class HomeBaseManager : MonoBehaviour
                     break;
             }
 
-            
-
             bikes[bikeOption] = true;
             playerData.Bikes = bikes;
             currentBike = playerData.Bicycle;
@@ -141,14 +139,14 @@ public class HomeBaseManager : MonoBehaviour
         for (int i = 1; i < 4; i++)
         {
             if (!bikes[i] && bikePrices[i] > piggyBank.GetBalance()) {
-                shopButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, .6f);
+                shopButtons[i].GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f, 1f);
             } else {
                 shopButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
             } 
         }
 
         if (piggyBank.GetBalance() < nextLevelPrice) {
-            shopButtons[0].GetComponent<Image>().color = new Color(1f, 1f, 1f, .6f);
+            shopButtons[0].GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f, 1f);
         } else {
             shopButtons[0].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
         } 
