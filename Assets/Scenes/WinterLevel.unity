@@ -5972,7 +5972,7 @@ MonoBehaviour:
   spawnRate: 3.333
   height: 1.8
   bikeShopHeight: 1.85
-  maxHouses: 1
+  maxHouses: 30
   housesPassed: 0
 --- !u!1 &2142287606
 GameObject:

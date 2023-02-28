@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     // Construct new health system for player character, set current and max health
     public HealthSystem _characterHealth = new HealthSystem(100, 100);
 
-    public static int firstLevel = 1;
-    public static int lastLevel = 4;
-    public static int currentLevel = firstLevel;
+    public static int firstLevel = 0;
+    public static int lastLevel = 5;
+    public static int currentLevel = 1;
 
     public static float currentPiggyBankBalance = 0f;
     public static Bike currentBike;

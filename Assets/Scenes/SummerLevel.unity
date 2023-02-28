@@ -665,7 +665,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 3447d67109b134eb5baa69486ba97b08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60f012ee5ad1e4941801d828f42fba24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1874,7 +1874,7 @@ MonoBehaviour:
   spawnRate: 3.333
   height: 1.8
   bikeShopHeight: 1.85
-  maxHouses: 1
+  maxHouses: 30
   housesPassed: 0
 --- !u!1 &425543911
 GameObject:
