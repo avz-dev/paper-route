@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78d04a37b8ca764a920dc9601b8ea63, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  balance: 200
+  balance: 0
   bicycle: {fileID: 0}
   bikes: 01000000

@@ -34,7 +34,7 @@ public class ThrowingArm : MonoBehaviour
     void FixedUpdate()
     {
         // alternates direction of power meter growth
-        if (strengthLevel > 12f || strengthLevel < 2f) {
+        if (strengthLevel > 14f || strengthLevel < 2f) {
             strengthIncrement *= -1;
         }
         // updates power meter while button is pressed

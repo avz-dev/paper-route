@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1370422256693296238}
   - component: {fileID: 2033769927}
   m_Layer: 8
-  m_Name: FireHydrant
+  m_Name: SidewalkObjects
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.003428183, y: 0.31970492}

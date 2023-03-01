@@ -46,6 +46,13 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void QuitToMainMenu()
+    {
+        currentLevel = currentLevel - 1;
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+    }
+
     public float GetPiggyBank()
     {
         return currentPiggyBankBalance;

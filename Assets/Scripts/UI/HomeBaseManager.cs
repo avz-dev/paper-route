@@ -14,7 +14,7 @@ public class HomeBaseManager : MonoBehaviour
     public TextMeshProUGUI finalPiggyBankBalance;
     public TextMeshProUGUI currentPiggyBankBalance;
     public TextMeshPro summaryText;
-    public GameObject hud;
+    public GameObject hud, pauseScreen;
     public PiggyBank piggyBank;
     public HouseSpawner houseSpawner;
     public BillboardSpawner billboardSpawner;
@@ -24,6 +24,8 @@ public class HomeBaseManager : MonoBehaviour
     public float nextLevelPrice = 15f;
     public DataSO playerData;
     public GameObject[] shopButtons;
+    private bool isPaused = false;
+    private bool isAtShop = false;
 
     private void Start()
     {
@@ -38,6 +40,12 @@ public class HomeBaseManager : MonoBehaviour
             EndGame();
             bikeShop = null;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            PauseGame();
+            isPaused = !isPaused;
+        }
     }
 
     // transition route to shop menu
@@ -48,15 +56,32 @@ public class HomeBaseManager : MonoBehaviour
         gameOverScreen.SetActive(true);
         finalPiggyBankBalance.SetText(currentPiggyBankBalance.text);
         hud.SetActive(false);
-        playerReference.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        playerReference.PausePlayer(false);
+        isAtShop = true;
         Time.timeScale = 0;
     }
 
-    public void RestartGame() 
+    // Move
+    public void GoToNextLevel() 
     {
         Time.timeScale = 1;
         GameManager.gameManager.StartGame();
     }
+
+    public void PauseGame() 
+    {
+        if (isAtShop) {
+            gameOverScreen.SetActive(isPaused);
+        } else {
+            hud.SetActive(isPaused);
+            playerReference.PausePlayer(isPaused);
+        }
+        pauseScreen.SetActive(!isPaused);
+        
+        if (isPaused && !isAtShop) Time.timeScale = 1;
+        else Time.timeScale = 0;
+    }
+
 
     public void RestartRoute() 
     {
@@ -66,6 +91,8 @@ public class HomeBaseManager : MonoBehaviour
         hud.SetActive(true);
         playerReference.RestockPaper();
         StartSpawning();
+        playerReference.PausePlayer(true);
+        isAtShop = false;
         Time.timeScale = 1;
     }
 
@@ -107,7 +134,6 @@ public class HomeBaseManager : MonoBehaviour
                     playerData.Bicycle = gameObject.AddComponent<Bike>();
                     break;
             }
-
             bikes[bikeOption] = true;
             playerData.Bikes = bikes;
             currentBike = playerData.Bicycle;

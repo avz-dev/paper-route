@@ -7,7 +7,7 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbod;
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float movementSpeed, standardSpeed;
     [SerializeField] private HomeBaseManager homeBaseManager;
     public ThrowingArm throwingArm;
     public TextMeshProUGUI healthText;
@@ -21,8 +21,7 @@ public class Player : MonoBehaviour
     public Color healingColor;
     public Color damageColor;
     public float idleSpeed;
-    public float slideDuration;
-    public float stunDuration;
+    public float slideDuration, stunDuration, slideSpeed;
     public int paperCount;
     public DataSO playerData;
     private bool isStunned = false;
@@ -35,6 +34,11 @@ public class Player : MonoBehaviour
             playerData.Bicycle = bike = gameObject.AddComponent<Bike>();
         }
         SetBike(bike);
+    }
+
+    public void PausePlayer(bool state) {
+        gameObject.GetComponent<SpriteRenderer>().enabled = state;
+        gameObject.GetComponent<ThrowingArm>().enabled = state;
     }
 
     private void Update() 
@@ -57,24 +61,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    // character take damage when colliding with obstacles
-    private void OnCollisionEnter2D(Collision2D other) 
-    {
-        
-        if (other.gameObject.tag == "Obstacle") 
-        {
-            throwingArm.ResetShot();
-            StartCoroutine(VisualizeDamage());
-            StartCoroutine(Stun());
-            other.gameObject.GetComponent<Collider2D>().enabled = false;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Slippery"){
             throwingArm.ResetShot();
             StartCoroutine(VisualizeDamage());
             StartCoroutine(Slide());
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if (other.gameObject.tag == "Obstacle") {
+            throwingArm.ResetShot();
+            StartCoroutine(VisualizeDamage());
+            StartCoroutine(Stun());
+            other.gameObject.GetComponent<Collider2D>().enabled = false;
         }
     }
     
@@ -92,10 +93,14 @@ public class Player : MonoBehaviour
 
     // Make player slide for the the current slideDuration
     private IEnumerator Slide()
-    {
+    {   
+        if (movementInput == Vector2.zero) movementInput = new Vector2(1, 0);
+        else if (movementInput == new Vector2(-1, 0)) movementSpeed = slideSpeed;
         throwingArm.isStunned = isSliding = true;
         yield return new WaitForSeconds(slideDuration);
         throwingArm.isStunned = isSliding = false;
+        movementInput = Vector2.zero;
+        movementSpeed = standardSpeed;
     }
 
     // visualize damage when character collides with item

@@ -365,7 +365,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -383,12 +383,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbod: {fileID: 8096031704573340236}
   movementSpeed: 3
+  standardSpeed: 3
   homeBaseManager: {fileID: 0}
+  throwingArm: {fileID: 0}
   healthText: {fileID: 0}
   sprite: {fileID: 8096031704573340237}
+  bikeAnim: {fileID: 0}
+  bikeAnimations: []
+  bikeSprites: []
   healingColor: {r: 0.60446566, g: 0.8113208, b: 0.60083663, a: 1}
   damageColor: {r: 0.9150943, g: 0.49187052, b: 0.35826805, a: 1}
   idleSpeed: 1.5
+  slideDuration: 0
+  stunDuration: 0
+  slideSpeed: 5
+  paperCount: 0
+  playerData: {fileID: 0}
 --- !u!114 &8096031704573340232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +444,7 @@ MonoBehaviour:
   throwPoint: {fileID: 8096031704309357288}
   paperPrefab: {fileID: 8861844118073216332, guid: ec47bf38a7ac64dabb4e15670359cf41, type: 3}
   powerBarVisual: {fileID: 8096031704937913143}
+  paperText: {fileID: 0}
   fill: {fileID: 8096031704246855497}
   powerBar: {fileID: 8096031704755862806}
   player: {fileID: 0}
@@ -443,6 +454,8 @@ MonoBehaviour:
   - {r: 0.93333334, g: 0.498224, b: 0.44313726, a: 1}
   startingStength: 2
   startingIncrement: 0.25
+  isStunned: 0
+  paperCount: 0
 --- !u!114 &8096031704573340247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb7080040f0a4b1694d21f4019f9b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  currentPaycheck: 0
+  hudText: {fileID: 0}
+  homeBaseText: {fileID: 0}
+  playerData: {fileID: 0}
 --- !u!70 &2131295117
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
