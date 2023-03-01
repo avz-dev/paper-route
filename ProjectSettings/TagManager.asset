@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - Slippery
+  - Health
+  - Money
   layers:
   - Default
   - TransparentFX

@@ -11,11 +11,13 @@ public class PiggyBank : MonoBehaviour
     public TextMeshProUGUI hudText;
     public TextMeshProUGUI homeBaseText;
     public DataSO playerData;
+    private SoundManager soundManager;
 
     private void Start() {
         balance = playerData.Balance;
         UpdateText();
         gm = GetComponent<GameManager>();
+        soundManager = GetComponent<SoundManager>();
     }
 
     // adds money to account
@@ -25,6 +27,10 @@ public class PiggyBank : MonoBehaviour
         currentPaycheck += amount;
         gm.StuffPiggyBank(amount);
         UpdateText();
+    
+        if (amount == 0.05f) soundManager.PlaySound(1);
+        else if (amount == 0.1f) soundManager.PlaySound(2);
+        else soundManager.PlaySound(3);
     }
 
     // takes money from account

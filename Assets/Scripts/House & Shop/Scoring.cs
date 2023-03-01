@@ -23,7 +23,6 @@ public class Scoring : MonoBehaviour
         if (!payed && other.transform.parent.GetComponent<Rigidbody2D>().velocity == Vector2.zero) {
             houseZone.SetActive(false);
             piggyBank.deposit(rate);    
-            piggyBank.deposit(0);
             showPay(other);
             payed = true;
         }

@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     public DataSO playerData;
     private bool isStunned = false;
     private bool isSliding = false; 
-
+    public SoundManager soundManager;
 
     private void Awake() {
         Bike bike = playerData.Bicycle;
@@ -34,6 +34,10 @@ public class Player : MonoBehaviour
             playerData.Bicycle = bike = gameObject.AddComponent<Bike>();
         }
         SetBike(bike);
+    }
+
+    public void Start() {
+        soundManager = GameManager.gameManager.GetComponent<SoundManager>();
     }
 
     public void PausePlayer(bool state) {
@@ -67,6 +71,10 @@ public class Player : MonoBehaviour
             throwingArm.ResetShot();
             StartCoroutine(VisualizeDamage());
             StartCoroutine(Slide());
+            soundManager.PlaySound(0);
+        } else if (other.gameObject.tag == "Money") {
+            GameManager.gameManager.GetComponent<PiggyBank>().deposit(1);
+            Destroy(other.gameObject);
         }
     }
 
@@ -76,6 +84,7 @@ public class Player : MonoBehaviour
             StartCoroutine(VisualizeDamage());
             StartCoroutine(Stun());
             other.gameObject.GetComponent<Collider2D>().enabled = false;
+            soundManager.PlaySound(0);
         }
     }
     

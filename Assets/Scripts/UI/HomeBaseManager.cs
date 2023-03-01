@@ -26,11 +26,13 @@ public class HomeBaseManager : MonoBehaviour
     public GameObject[] shopButtons;
     private bool isPaused = false;
     private bool isAtShop = false;
+    private SoundManager soundManager;
 
     private void Start()
     {
         currentBike = gameObject.AddComponent<Bike>();
         bikes = playerData.Bikes;
+        soundManager = GetComponent<SoundManager>();
     }
 
     private void Update() 
@@ -70,12 +72,14 @@ public class HomeBaseManager : MonoBehaviour
 
     public void PauseGame() 
     {
+        soundManager.PlaySound(4);
         if (isAtShop) {
             gameOverScreen.SetActive(isPaused);
         } else {
             hud.SetActive(isPaused);
             playerReference.PausePlayer(isPaused);
         }
+
         pauseScreen.SetActive(!isPaused);
         
         if (isPaused && !isAtShop) Time.timeScale = 1;

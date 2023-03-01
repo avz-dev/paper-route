@@ -71,11 +71,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98fb48208f8745428b4817112418612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerReference: {fileID: 0}
+  gm: {fileID: 0}
   piggyBank: {fileID: 0}
   houseZone: {fileID: 8465487905138636317}
   floatingTextprefab: {fileID: 7951897645937574071, guid: e775f11fe4e5742f6a631df08e651c5a, type: 3}
-  rateColor: {r: 0.60463935, g: 0.9622642, b: 0.4765931, a: 1}
+  rateColor: {r: 0.6610202, g: 0.9245283, b: 0.56256676, a: 1}
   rate: 0.25
 --- !u!1 &3876733792105247320
 GameObject:
@@ -324,11 +324,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98fb48208f8745428b4817112418612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerReference: {fileID: 0}
+  gm: {fileID: 0}
   piggyBank: {fileID: 0}
   houseZone: {fileID: 8465487905138636317}
   floatingTextprefab: {fileID: 7951897645937574071, guid: e775f11fe4e5742f6a631df08e651c5a, type: 3}
-  rateColor: {r: 0.8490566, g: 0.4661705, b: 0.38848346, a: 1}
+  rateColor: {r: 0.8584906, g: 0.44176424, b: 0.39279994, a: 1}
   rate: 0.05
 --- !u!1 &3876733793788218145
 GameObject:
@@ -401,11 +401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98fb48208f8745428b4817112418612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerReference: {fileID: 0}
+  gm: {fileID: 0}
   piggyBank: {fileID: 0}
   houseZone: {fileID: 8465487905138636317}
   floatingTextprefab: {fileID: 7951897645937574071, guid: e775f11fe4e5742f6a631df08e651c5a, type: 3}
-  rateColor: {r: 1, g: 0.93379444, b: 0.4764151, a: 1}
+  rateColor: {r: 1, g: 0.9187046, b: 0.514151, a: 1}
   rate: 0.1
 --- !u!1 &8465487905138636317
 GameObject:

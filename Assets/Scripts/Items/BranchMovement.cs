@@ -20,6 +20,7 @@ public class BranchMovement : MonoBehaviour
 
         if (transform.position.x < colliderEdge) {
             gameObject.GetComponent<Collider2D>().isTrigger = true;
+            gameObject.GetComponent<SpriteRenderer>().spriteSortPoint = SpriteSortPoint.Center;
         }
     }
 }
