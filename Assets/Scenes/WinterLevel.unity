@@ -6647,12 +6647,7 @@ MonoBehaviour:
   piggyBank: {fileID: 2025098178}
   houseSpawner: {fileID: 2120980308}
   billboardSpawner: {fileID: 789435986}
-  bikePrices:
-  - 0
-  - 10
-  - 15
-  - 20
-  nextLevelPrice: 20
+  nextLevelPrice: 25
   playerData: {fileID: 11400000, guid: 30d403b88c366b545969fbdc305d8b86, type: 2}
   shopButtons:
   - {fileID: 1277293658}

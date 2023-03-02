@@ -54,8 +54,8 @@ public class BasketBike : Bike
     {
         paperCapacity = 35;
         slideDuration = 1f;
-        stunDuration = 1f;
-        bikeSpeed = 3f;
+        stunDuration = 1.5f;
+        bikeSpeed = 2.5f;
         bikeSpriteIndex = 1;
         bikeAnimation = "BasketBikeAnim";
     }

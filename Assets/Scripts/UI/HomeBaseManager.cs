@@ -20,7 +20,7 @@ public class HomeBaseManager : MonoBehaviour
     public BillboardSpawner billboardSpawner;
     private bool[] bikes = new bool[4];
     private Bike currentBike;
-    public float[] bikePrices = {0, 10, 15, 20};
+    private float[] bikePrices = {0f, 10f, 15f, 20f};
     public float nextLevelPrice = 15f;
     public DataSO playerData;
     public GameObject[] shopButtons;

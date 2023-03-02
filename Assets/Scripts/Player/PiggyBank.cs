@@ -27,7 +27,7 @@ public class PiggyBank : MonoBehaviour
         currentPaycheck += amount;
         gm.StuffPiggyBank(amount);
         UpdateText();
-    
+
         if (amount == 0.05f) soundManager.PlaySound(1);
         else if (amount == 0.1f) soundManager.PlaySound(2);
         else soundManager.PlaySound(3);
@@ -48,6 +48,7 @@ public class PiggyBank : MonoBehaviour
     public void ClearPaycheck() 
     {
         currentPaycheck = 0f;
+        UpdateText();
     }
 
     public float CalculateBonus() 
