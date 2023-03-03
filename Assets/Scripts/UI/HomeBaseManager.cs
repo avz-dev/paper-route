@@ -19,20 +19,17 @@ public class HomeBaseManager : MonoBehaviour
     public HouseSpawner houseSpawner;
     public BillboardSpawner billboardSpawner;
     private bool[] bikes = new bool[4];
-    private Bike currentBike;
+
     private float[] bikePrices = {0f, 10f, 15f, 20f};
     public float nextLevelPrice = 15f;
     public DataSO playerData;
     public GameObject[] shopButtons;
     private bool isPaused = false;
     private bool isAtShop = false;
-    private SoundManager soundManager;
 
-    private void Start()
+    private void Awake()
     {
-        currentBike = gameObject.AddComponent<Bike>();
         bikes = playerData.Bikes;
-        soundManager = GetComponent<SoundManager>();
     }
 
     private void Update() 
@@ -72,7 +69,6 @@ public class HomeBaseManager : MonoBehaviour
 
     public void PauseGame() 
     {
-        soundManager.PlaySound(4);
         if (isAtShop) {
             gameOverScreen.SetActive(isPaused);
         } else {
@@ -119,33 +115,34 @@ public class HomeBaseManager : MonoBehaviour
 
     public void SelectBike(int bikeOption) 
     {
+        Bike bike;
         if (bikes[bikeOption] || piggyBank.withdraw(bikePrices[bikeOption])) {
             switch (bikeOption)
             {
                 case 1: 
                     if (!bikes[bikeOption]) shopButtons[1].transform.GetChild(0).gameObject.SetActive(false); 
-                    playerData.Bicycle = gameObject.AddComponent<BasketBike>();
+                    bike = gameObject.AddComponent<BasketBike>();
                     break;
                 case 2: 
                     if (!bikes[bikeOption]) shopButtons[2].transform.GetChild(0).gameObject.SetActive(false); 
-                    playerData.Bicycle = gameObject.AddComponent<RoadBike>();
+                    bike = gameObject.AddComponent<RoadBike>();
                     break;
                 case 3:
                     if (!bikes[bikeOption]) shopButtons[3].transform.GetChild(0).gameObject.SetActive(false); 
-                    playerData.Bicycle = gameObject.AddComponent<MountainBike>();
+                    bike = gameObject.AddComponent<MountainBike>();
                     break;
                 default: 
-                    playerData.Bicycle = gameObject.AddComponent<Bike>();
+                    bike = gameObject.AddComponent<Bike>();
                     break;
             }
+            playerData.Bicycle = bikeOption;
             bikes[bikeOption] = true;
             playerData.Bikes = bikes;
-            currentBike = playerData.Bicycle;
-            GameManager.currentBike = currentBike;
-            playerReference.SetBike(currentBike); 
+            playerReference.SetBike(bike); 
             ShowPurchasable();           
         }
     }
+
 
     public void WriteSummary() 
     {
@@ -174,6 +171,9 @@ public class HomeBaseManager : MonoBehaviour
                 shopButtons[i].GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f, 1f);
             } else {
                 shopButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+                if (bikes[i]) {
+                    shopButtons[i].transform.GetChild(0).gameObject.SetActive(false);
+                }
             } 
         }
 

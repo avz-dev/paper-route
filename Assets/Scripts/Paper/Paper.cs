@@ -17,17 +17,7 @@ public class Paper : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
-    private void FixedUpdate() 
-    {
-        transform.position += Vector3.left * idleSpeed * Time.deltaTime;
-        
-        // destroy object once it runs off screen
-        if (transform.position.x < leftEdge) {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Update() 
+    private void FixedUpdate()
     {
         // slow down velocity
         if (rigidbod.velocity != Vector2.zero) 
@@ -39,6 +29,17 @@ public class Paper : MonoBehaviour
             {
                 rigidbod.velocity = Vector2.zero;
             }
+        }
+
+    }
+
+    private void Update() 
+    {
+        transform.position += Vector3.left * idleSpeed * Time.deltaTime;
+
+        // destroy object once it runs off screen
+        if (transform.position.x < leftEdge) {
+            Destroy(gameObject);
         }
     }
 

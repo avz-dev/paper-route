@@ -51,7 +51,8 @@ public class ThrowingArm : MonoBehaviour
             } else {
                 fill.GetComponent<Image>().color = powerBarColors[2];
             }
-        } 
+        }
+
     }
 
     void Update() {
@@ -61,7 +62,9 @@ public class ThrowingArm : MonoBehaviour
             paperPrefab.GetComponent<Paper>().speed = strengthLevel;
             Shoot();
             ResetShot();
-        } 
+        } else if (Input.GetButtonUp("Fire1") && paperCount <= 0) {
+            GameManager.gameManager.GetComponent<SoundManager>().PlaySound(4);
+        }
     }
 
     private void Shoot() 

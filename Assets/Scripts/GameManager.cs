@@ -16,9 +16,6 @@ public class GameManager : MonoBehaviour
     public static int lastLevel = 5;
     public static int currentLevel = 1;
 
-    public static float currentPiggyBankBalance = 0f;
-    public static Bike currentBike;
-
     void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -36,7 +33,7 @@ public class GameManager : MonoBehaviour
         if (currentLevel > lastLevel) {
             currentLevel = firstLevel;
         }
-        
+
         SceneManager.LoadScene(currentLevel);
         currentLevel++;
     }
@@ -52,25 +49,4 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
-
-    public float GetPiggyBank()
-    {
-        return currentPiggyBankBalance;
-    }
-
-    public void StuffPiggyBank(float deposit)
-    {
-        currentPiggyBankBalance += deposit;
-    }
-
-    public bool BreakPiggyBank(float cost)
-    {
-        if (currentPiggyBankBalance < cost) {
-            return false;
-        } else {
-            currentPiggyBankBalance -= cost;
-            return true;
-        }
-    }
-
 }

@@ -29,14 +29,11 @@ public class Player : MonoBehaviour
     public SoundManager soundManager;
 
     private void Awake() {
-        Bike bike = playerData.Bicycle;
-        if (bike == null) {
-            playerData.Bicycle = bike = gameObject.AddComponent<Bike>();
-        }
-        SetBike(bike);
+        homeBaseManager.SelectBike(playerData.Bicycle);
     }
 
     public void Start() {
+        homeBaseManager.SelectBike(playerData.Bicycle);
         soundManager = GameManager.gameManager.GetComponent<SoundManager>();
     }
 
@@ -124,6 +121,7 @@ public class Player : MonoBehaviour
         }
     }
 
+
     // Change parameters based on given bike
     public void SetBike(Bike bike)
     {   
@@ -133,6 +131,7 @@ public class Player : MonoBehaviour
         movementSpeed = bike.bikeSpeed;
         sprite.sprite = bikeSprites[bike.bikeSpriteIndex];
         bikeAnim.Play(bike.bikeAnimation);
+        Debug.Log(bike.bikeAnimation);
     }
 
     public void RestockPaper()

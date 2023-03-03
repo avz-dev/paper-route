@@ -25,7 +25,6 @@ public class PiggyBank : MonoBehaviour
         balance += amount;
         playerData.Balance += amount;
         currentPaycheck += amount;
-        gm.StuffPiggyBank(amount);
         UpdateText();
 
         if (amount == 0.05f) soundManager.PlaySound(1);

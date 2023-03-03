@@ -6,7 +6,7 @@ using UnityEngine;
 public class DataSO : ScriptableObject
 {
     public float balance;
-    public Bike bicycle;
+    public int bicycle;
     public bool[] bikes;
 
     public float Balance
@@ -15,7 +15,7 @@ public class DataSO : ScriptableObject
         set { balance = value; }
     }
 
-    public Bike Bicycle
+    public int Bicycle
     {
         get { return bicycle; }
         set { bicycle = value; }

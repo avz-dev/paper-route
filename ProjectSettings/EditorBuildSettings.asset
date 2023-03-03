@@ -19,7 +19,7 @@ EditorBuildSettings:
     guid: 41b6fe4aaef0048e48574ee0a657f0b8
   - enabled: 1
     path: Assets/Scenes/WinterLevel.unity
-    guid: a2cb4f6d09a7d495ea22bcd9ed9847c1
+    guid: cdfdb2f5141da49a28bd0917700bfa78
   - enabled: 1
     path: Assets/Scenes/EndScene.unity
     guid: 19f53d409fed342c9b5b801d18f0ed7e
