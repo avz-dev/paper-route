@@ -32,3 +32,11 @@ Purchasing the next level will change the season, introducing new obstacles and 
 ![figure 12](resources/winter-shop.png)
 Once the final level has been purchased, the player will have earned enough to end the game.
 ![figure 13](resources/end.png)
+
+## Contributions
+
+**Andrew** served as the lead programmer, writing all of the game code. Additionally, Andrew also created much of the art in the game including all backgrounds, buildings, UI elements, and the dollar bill sprite.
+
+**Gale** served as an artist on the game. Gale created the character sprite as well as all of the obstacle sprites.
+
+**Chris** served as the producer, preparing game design documents and presentation. Chris also compiled free-use sounds to be used in the game.
